@@ -1,0 +1,6 @@
+
+scraping_creds.json
+.DS_Store
+.ipynb_checkpoints/harvard-protests-checkpoint.ipynb
+.ipynb_checkpoints/police-analysis-checkpoint.ipynb
+data/.DS_Store
