@@ -89,5 +89,46 @@ ggplot(data=normalized_black_change_stats, aes(x=protests, y=change)) +
   xlab("Protests") + 
   ylab("Normalized change in black killings\n(2013-2015 to 2016-2018)") + 
   labs(title="Black police killings vs protests\n(normalized)", subtitle = "N = 32, Slope = -0.0121, R2 = 0.1293, p = 0.0433")
-
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
+
+change_stats$had_protests <- change_stats$protests > 0
+
+ggplot(data = change_stats, aes(x=factor(had_protests), y=change)) + 
+  geom_bar(stat = "summary", fun = "mean", fill = c(monochrome[1], monochrome[2]))  + 
+  scale_x_discrete(labels = c("No Protests", "Protests")) + 
+  stat_summary(aes(label=round(..y..,2)), fun=mean, geom="text", size=6, vjust = c(-0.5, 1.5)) + 
+  coord_cartesian(ylim=c(-2, 1)) + 
+  theme_hodp() + 
+  theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
+  ylab("Average change") + 
+  xlab("") + 
+  labs(title="Change in police killings vs protests", subtitle = "N=96, R2=0.0229, p = 0.1407")
+grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
+
+normalized_change_stats$had_protests <- normalized_change_stats$protests > 0
+
+ggplot(data = normalized_change_stats, aes(x=factor(had_protests), y=change)) + 
+  geom_bar(stat = "summary", fun = "mean", fill = c(monochrome[1], monochrome[2]))  + 
+  scale_x_discrete(labels = c("No Protests", "Protests")) + 
+  stat_summary(aes(label=round(..y..,2)), fun=mean, geom="text", size=6, vjust = c(-0.5, 1.5)) + 
+  coord_cartesian(ylim=c(-0.1, 0.1)) + 
+  theme_hodp() + 
+  theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
+  ylab("Average change (normalized)") + 
+  xlab("") + 
+  labs(title="Change in police killings vs protests\n(normalized)", subtitle = "N=96, R2=0.0302, p =  0.0902")
+grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
+
+normalized_protests_avg <- mean(normalized_change_stats$change[normalized_change_stats$protests > 0])
+normalized_no_protests_avg <- mean(normalized_change_stats$change[normalized_change_stats$protests == 0])
+
+extract_state <- Vectorize(function(city_str){return(strsplit(city_str, ", ")[[1]][[2]])})
+normalized_change_stats$state <- extract_state(normalized_change_stats$city)
+change_stats$state <- extract_state(change_stats$city)
+
+state_turnouts <- read.csv("2012-turnout.csv")
+normalized_change_stats <- merge(x = normalized_change_stats, y = state_turnouts, by = "state")
+change_stats <- merge(x = change_stats, y = state_turnouts, by = "state")
+
+summary(lm(change ~ protests + pres_turnout, data = normalized_change_stats))
+summary(lm(change ~ protests + pres_turnout, data = change_stats))

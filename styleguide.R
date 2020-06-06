@@ -19,7 +19,7 @@ theme_hodp <- function () {
       legend.background = element_rect(fill="transparent", colour=NA),
       legend.key = element_rect(fill="transparent", colour=NA),
       plot.title = element_text(size=24,  family="Helvetica", face = "bold", margin = margin(t = 0, r = 0, b = 10, l = 0)),
-      plot.subtitle = element_text(size=12,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0)),
+      plot.subtitle = element_text(size=18,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0)),
       plot.caption = element_text(size=8,  family="Helvetica", hjust = 1),
       axis.text.x =element_text(size=10,  family="Helvetica"),
       axis.title.x =element_text(size=14, family="Helvetica", margin = margin(t = 10, r = 0, b = 0, l = 0), face = "bold"),

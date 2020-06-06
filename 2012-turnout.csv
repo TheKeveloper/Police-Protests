@@ -1,0 +1,52 @@
+state,state_full,pres_turnout
+AL,Alabama,0.59
+AK,Alaska,0.59
+AZ,Arizona,0.53
+AR,Arkansas,0.51
+CA,California,0.55
+CO,Colorado,0.70
+CT,Connecticut,0.61
+DE,Delaware,0.62
+DC,District of Columbia,0.62
+FL,Florida,0.63
+GA,Georgia,0.59
+HI,Hawaii,0.44
+ID,Idaho,0.60
+IL,Illinois,0.59
+IN,Indiana,0.55
+IA,Iowa,0.70
+KS,Kansas,0.57
+KY,Kentucky,0.56
+LA,Louisiana,0.60
+ME,Maine,0.68
+MD,Maryland,0.67
+MA,Massachusetts,0.66
+MI,Michigan,0.65
+MN,Minnesota,0.76
+MS,Mississippi,0.59
+MO,Missouri,0.62
+MT,Montana,0.63
+NE,Nebraska,0.60
+NV,Nevada,0.56
+NH,New Hampshire,0.70
+NJ,New Jersey,0.62
+NM,New Mexico,0.55
+NY,New York,0.53
+NC,North Carolina,0.65
+ND,North Dakota,0.60
+OH,Ohio,0.65
+OK,Oklahoma,0.49
+OR,Oregon,0.63
+PA,Pennsylvania,0.60
+RI,Rhode Island,0.58
+SC,South Carolina,0.56
+SD,South Dakota,0.59
+TN,Tennessee,0.52
+TX,Texas,0.50
+UT,Utah,0.56
+VT,Vermont,0.61
+VA,Virginia,0.66
+WA,Washington,0.65
+WV,West Virginia,0.46
+WI,Wisconsin,0.73
+WY,Wyoming,0.59
