@@ -130,5 +130,35 @@ state_turnouts <- read.csv("2012-turnout.csv")
 normalized_change_stats <- merge(x = normalized_change_stats, y = state_turnouts, by = "state")
 change_stats <- merge(x = change_stats, y = state_turnouts, by = "state")
 
-summary(lm(change ~ protests + pres_turnout, data = normalized_change_stats))
-summary(lm(change ~ protests + pres_turnout, data = change_stats))
+change_mod <- lm(change ~ pres_turnout, data = change_stats)
+protests_mod <- lm(protests ~ pres_turnout, data = change_stats)
+
+change_stats$residuals <- change_mod$residuals
+change_stats$protest_residuals <- protests_mod$residuals
+
+ggplot(data=change_stats, aes(x=protest_residuals, y=residuals)) + 
+  geom_point(size = 2.5, color = monochrome[4]) + 
+  geom_smooth(method = lm, se = F, color = monochrome[2], size = 2) +
+  theme_hodp() + 
+  theme(plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
+  xlab("Protests above expected") + 
+  ylab("Change above expected \n(2013-2015 to 2016-2018)") + 
+  labs(title="Change vs protests residuals", subtitle = "N = 96, Slope = -0.324, R2 = 0.180, p = 1.654e-05")
+grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
+summary(lm(residuals ~ protest_residuals, data = change_stats))
+
+normalized_change_mod <- lm(change ~ pres_turnout, data = normalized_change_stats)
+normalized_change_stats$residuals <- normalized_change_mod$residuals
+normalized_change_stats$protest_residuals <- protests_mod$residuals
+ggplot(data=normalized_change_stats, aes(x=protest_residuals, y=residuals)) + 
+  geom_point(size = 2.5, color = monochrome[4]) + 
+  geom_smooth(method = lm, se = F, color = monochrome[2], size = 2) +
+  theme_hodp() + 
+  theme(plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
+  xlab("Protests above expected") + 
+  ylab("Normalized change above expected\n(2013-2015 to 2016-2018)") + 
+  labs(title="Change vs protests residuals\n(normalized)", subtitle = "N = 96, Slope = -0.0124, R2 = 0.0994, p = 0.00176")
+grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
+summary(lm(residuals ~ protest_residuals, data = normalized_change_stats))
+
+summary(lm(residuals ~ protests, data = normalized_change_stats))

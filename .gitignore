@@ -4,3 +4,4 @@ scraping_creds.json
 .ipynb_checkpoints/harvard-protests-checkpoint.ipynb
 .ipynb_checkpoints/police-analysis-checkpoint.ipynb
 data/.DS_Store
+.ipynb_checkpoints/cleanup-checkpoint.ipynb
