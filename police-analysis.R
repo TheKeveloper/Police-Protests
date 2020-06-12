@@ -22,7 +22,7 @@ ggplot(data=killings_by_race, aes(x=factor(year))) +
   theme_hodp() + 
   xlab("Year") + 
   ylab("Killings") + 
-  labs(title="Police Killings Per Year", fill = "Victim Race")
+  labs(title="Police killings per year", fill = "Victim Race")
 
 # Add Logo
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
@@ -38,7 +38,7 @@ ggplot(data=unarmed_killings_by_race, aes(x=factor(year))) +
   theme_hodp() + 
   xlab("Year") + 
   ylab("Killings") + 
-  labs(title="Unarmed Police Killings Per Year", fill = "Victim Race")
+  labs(title="Unarmed police killings per year", fill = "Victim Race")
 
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 
@@ -52,7 +52,7 @@ ggplot(data=change_stats, aes(x=protests, y=change)) +
   theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
   xlab("Protests") + 
   ylab("Change in killings\n(2013-2015 to 2016-2018)") + 
-  labs(title="Police killings vs protests", subtitle = "N = 96, Slope = -0.294, R2 = 0.1488, p = 0.0001")
+  labs(title="Police killings vs. protests", subtitle = "N=96, Slope=-0.294, R2=0.1488, p=0.0001")
 
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 
@@ -63,7 +63,7 @@ ggplot(data=normalized_change_stats, aes(x=protests, y=change)) +
   theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
   xlab("Protests") + 
   ylab("Normalized change in killings\n(2013-2015 to 2016-2018)") + 
-  labs(title="Police killings vs protests\n(normalized)", subtitle = "N = 96, Slope = -0.0116, R2 = 0.0843, p = 0.0041")
+  labs(title="Police killings vs. protests\n(normalized)", subtitle = "N=96, Slope=-0.0116, R2=0.0843, p=0.0041")
 
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 
@@ -76,7 +76,7 @@ ggplot(data=black_change_stats, aes(x=protests, y=change)) +
   theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
   xlab("Protests") + 
   ylab("Change in black killings\n(2013-2015 to 2016-2018)") + 
-  labs(title="Black police killings vs protests", subtitle = "N = 32, Slope = -0.2006, R2 = 0.0802, p = 0.0181")
+  labs(title="Black police killings vs. protests", subtitle = "N=32, Slope=-0.2006, R2=0.0802, p=0.0181")
 
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 
@@ -88,7 +88,7 @@ ggplot(data=normalized_black_change_stats, aes(x=protests, y=change)) +
   theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
   xlab("Protests") + 
   ylab("Normalized change in black killings\n(2013-2015 to 2016-2018)") + 
-  labs(title="Black police killings vs protests\n(normalized)", subtitle = "N = 32, Slope = -0.0121, R2 = 0.1293, p = 0.0433")
+  labs(title="Black police killings vs. protests\n(normalized)", subtitle = "N=32, Slope=-0.0121, R2=0.1293, p=0.0433")
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 
 change_stats$had_protests <- change_stats$protests > 0
@@ -100,9 +100,9 @@ ggplot(data = change_stats, aes(x=factor(had_protests), y=change)) +
   coord_cartesian(ylim=c(-2, 1)) + 
   theme_hodp() + 
   theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
-  ylab("Average change") + 
+  ylab("Average change in killings") + 
   xlab("") + 
-  labs(title="Change in police killings vs protests", subtitle = "N=96, R2=0.0229, p = 0.1407")
+  labs(title="Change in police killings vs. protests", subtitle = "N=96, R2=0.0229, p=0.1407")
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 
 normalized_change_stats$had_protests <- normalized_change_stats$protests > 0
@@ -114,9 +114,9 @@ ggplot(data = normalized_change_stats, aes(x=factor(had_protests), y=change)) +
   coord_cartesian(ylim=c(-0.1, 0.1)) + 
   theme_hodp() + 
   theme( plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
-  ylab("Average change (normalized)") + 
+  ylab("Average change in killings\n(normalized)") + 
   xlab("") + 
-  labs(title="Change in police killings vs protests\n(normalized)", subtitle = "N=96, R2=0.0302, p =  0.0902")
+  labs(title="Change in police killings vs. protests\n(normalized)", subtitle = "N=96, R2=0.0302, p=0.0902")
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 
 normalized_protests_avg <- mean(normalized_change_stats$change[normalized_change_stats$protests > 0])
@@ -143,7 +143,7 @@ ggplot(data=change_stats, aes(x=protest_residuals, y=residuals)) +
   theme(plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
   xlab("Protests above expected") + 
   ylab("Change above expected \n(2013-2015 to 2016-2018)") + 
-  labs(title="Change vs protests residuals", subtitle = "N = 96, Slope = -0.324, R2 = 0.180, p = 1.654e-05")
+  labs(title="Change vs. protests residuals", subtitle = "N=96, Slope=-0.324, R2=0.180, p=1.654e-05")
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 summary(lm(residuals ~ protest_residuals, data = change_stats))
 
@@ -157,7 +157,7 @@ ggplot(data=normalized_change_stats, aes(x=protest_residuals, y=residuals)) +
   theme(plot.subtitle = element_text(size=14,  family="Helvetica", color="#717171", face = "italic", margin = margin(t = 0, r = 0, b = 10, l = 0))) +
   xlab("Protests above expected") + 
   ylab("Normalized change above expected\n(2013-2015 to 2016-2018)") + 
-  labs(title="Change vs protests residuals\n(normalized)", subtitle = "N = 96, Slope = -0.0124, R2 = 0.0994, p = 0.00176")
+  labs(title="Change vs protests residuals\n(normalized)", subtitle = "N=96, Slope=-0.0124, R2=0.0994, p=0.00176")
 grid::grid.raster(logo, x = 0.01, y = 0.01, just = c('left', 'bottom'), width = unit(1.5, 'cm'))
 summary(lm(residuals ~ protest_residuals, data = normalized_change_stats))
 
